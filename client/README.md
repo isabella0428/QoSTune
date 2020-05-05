@@ -33,4 +33,3 @@ There is a confusing plugin called mysql-connector!!! Don't use that if u use my
 ##### Python sql command 
 
 I wrote a template python file *run.py* about how to connect to the database and do common mysql connections.
-

@@ -39,3 +39,17 @@ if __name__ == "__main__":
     myresult = cursor.fetchall()
     for res in myresult:
         print(res)
+
+    # Get system parameter
+    cursor.execute("show variables like 'max_connections'")
+    result = cursor.fetchall()
+    for res in result:
+        print(res)
+
+    # # Set system parameter
+    cursor.execute("set global max_connections=110")
+    cursor.execute("show variables like 'max_connections'")
+    result = cursor.fetchall()
+    for res in result:
+        print(res)
+
