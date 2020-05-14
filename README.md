@@ -5,7 +5,7 @@ QoSTune project -- Using RL to find a better database configuration
 
 ## Execution Plan
 
-#### 1. Installization
+#### 1. [Installization](./Installation.md)
 
 - [ ] Install Mysql on remote server
 
