@@ -1,10 +1,10 @@
-# ECS of Aaliyun
+# ECS of Ali Cloud
 
 ```
 ssh root@ip
 ```
 
-## Install MySQL server
+## Install MySQL server (ver 14.14)
 
 ```
 sudo apt-get update
@@ -73,4 +73,32 @@ Traceback (most recent call last):
     return _setlocale(category, locale)
 locale.Error: unsupported locale setting
 ```
+
+Credits: https://stackoverflow.com/questions/36394101/pip-install-locale-error-unsupported-locale-setting?rq=1
+
+```
+export LC_ALL=C
+```
+
+Then I use:
+
+```
+pip3 install mysql-connector-python
+```
+
+Bingo! 
+
+And the version of pip3 is out of date, so I use order below to upgrade it:
+
+```
+pip3 install --upgrade pip
+```
+
+Then I use python3, 
+
+```
+import mysql.connector
+```
+
+no warning nor error, so succeed.
 
