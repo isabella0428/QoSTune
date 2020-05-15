@@ -43,15 +43,36 @@ Then on Ali Cloud, add 安全组
 
 使用Navicat客户端 ssh 方式可以远程访问MySQL
 
+
+
 ## Install MySQL python connector:
 
-### Install python3-pip
+### For macOS:
+
+Create a virtual env:
+
+```
+conda create -n sqlenv python=3
+conda activate sqlenv
+```
+
+Then use:
+
+```
+pip install mysql-connector-python
+```
+
+
+
+### For LinuxOS:
+
+Install python3-pip
 
 ```
 apt install python3-pip
 ```
 
-### Install mysql-connector
+Install mysql-connector
 
 ```
 python3 -m pip install mysql-connector
@@ -80,7 +101,7 @@ Credits: https://stackoverflow.com/questions/36394101/pip-install-locale-error-u
 export LC_ALL=C
 ```
 
-Then I use:
+I use:
 
 ```
 pip3 install mysql-connector-python
@@ -101,4 +122,24 @@ import mysql.connector
 ```
 
 no warning nor error, so succeed.
+
+## Connect by python
+
+```python
+import mysql.connector
+ 
+mydb = mysql.connector.connect(
+  host="47.96.140.67",       # 数据库主机地址
+  user="root",    # 数据库用户名
+  passwd="8888"   # 数据库密码
+) 
+print(mydb)
+
+mycursor = mydb.cursor()
+mycursor.execute("SHOW DATABASES")
+for x in mycursor:
+  print(x)
+```
+
+credits: https://www.runoob.com/python3/python-mysql-connector.html
 
