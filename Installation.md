@@ -39,7 +39,7 @@ flush privileges;        #刷新权限表，使配置生效
 
 Then on Ali Cloud, add 安全组
 
-
+[![securitygroup.png](https://i.postimg.cc/GpQ9grhZ/securitygroup.png)](https://postimg.cc/6789TkZ0)
 
 使用Navicat客户端 ssh 方式可以远程访问MySQL
 
