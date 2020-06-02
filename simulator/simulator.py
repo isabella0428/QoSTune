@@ -1,11 +1,36 @@
 import mysql.connector
+import numpy as np
+import pickle
+import time
 
 class Env:
-    def __init__(self, variables=None, metrics=None, hostname="47.96.140.67", username="root", password="8888"):
+    def __init__(self, variables=None, metrics="QPS", hostname="47.96.140.67", username="root", password="8888"):
         self.variables = variables          # Knobs to set
         self.metrics = metrics              # Metrics for evaluating performance
         self.mydb = self.login(hostname, username, password)
         self.cursor = self.mydb.cursor()
+    
+    def saveDefaultSetting(self):
+        """
+        Store default global setting
+        """
+        command = "show global variables;"
+        
+        defaultSetting = {}
+        result = self.getValue(command)
+        for line in result:
+            defaultSetting[line[0]] = line[1]
+        
+        with open("data/defaultSetting.pkl", "wb") as output:
+            pickle.dump(defaultSetting, output, pickle.HIGHEST_PROTOCOL)
+        
+    def getDefaultSetting(self):
+        """
+        Read default global setting
+        """
+        with open("data/defaultSetting.pkl", "rb") as output:
+            data = pickle.load(output)
+        return data
 
     def login(self, hostname, username, password):
         """
@@ -18,39 +43,41 @@ class Env:
         )
         return mydb
     
-    def execute(self, queries):
+    def execute(self, query):
         """
-        Execute workload
+        Update, Insert, Delete commands
         """
-        for q in queries:
-            self.cursor.execute(q)
+        self.cursor.execute(query)
+    
+    def getValue(self, query):
+        """
+        Get commands
+        """
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        return result
 
-    def getQueryVec(self):
+    def getQueryVec(self, queries, dim=[1, 100]):
         """
         Generate vector from query
         """
-        return [1]
+        vec = np.zeros(dim)
+        # TODO: Get feature from execution plan
+        for query in queries:
+            vec += vec
+        return vec
     
     def getMetricsVec(self):
         """
         Generate vector from metrics
         """
-        vec = []
+        if self.metrics == "QPS":   # Query per second
+            command = "show global status where Variable_name in ('com_select','com_insert','com_delete','com_update');"
 
-        for m in self.metrics:
-            value = self.getValue(m)
-            vec.append(value)
-        return vec
-    
-    def getValue(self, variable):
-        """
-        Get specfic value from database
-        """
-        command = "show variables like " + str(variable)
-        result = self.cursor.fetchall()
-
-        for res in result:
-            return float(res)
+            preValue = self.getValue(command)        # Select, insert, delete and update queries number
+            time.sleep(5)                            # Wait 5 seconds
+            nextValue = self.getValue(command)
+            return nextValue - preValue
     
     def getState(self):
         """
@@ -65,6 +92,14 @@ class Env:
         return totalVec
     
     def reset(self):
-        # Clear all
+        """
+        Drop all tables
+        """
+        command = "show tables"
+        result = self.execute(command)
+
+        for table in result:
+            command = "drop table " + table + ";"
+            self.execute(command)
         return
     

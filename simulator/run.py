@@ -26,40 +26,43 @@ if __name__ == "__main__":
     # Initialize environment
     env = Env()
 
-    # Create Actor, Critic
-    sess = tf.InteractiveSession()
-    actor = Actor(env, sess)
-    critic = Critic(env, sess)
+    # env.saveDefaultSetting()
+    print(env.getDefaultSetting())
 
-    # Logging
-    queries = []
+    # # Create Actor, Critic
+    # sess = tf.InteractiveSession()
+    # actor = Actor(env, sess)
+    # critic = Critic(env, sess)
 
-    for episode in range(EPISODE):
-        # Initialize task
-        env.reset()
+    # # Logging
+    # queries = []
 
-        for step in range(STEP):
-            state = env.getState()
-            action = actor.choose_action()
-            env.execute(action)
+    # for episode in range(EPISODE):
+    #     # Initialize task
+    #     env.reset()
 
-            if step > 0:
-                reward = env.getReward()
-                next_state = env.getState()
-                td_error = critic.train_Q_network(
-                    state, reward, next_state)
-                # true_gradient = grad[logPi(s,a) * td_error]
-                actor.learn(state, 1, td_error)
-                state = next_state
+    #     for step in range(STEP):
+    #         state = env.getState()
+    #         action = actor.choose_action()
+    #         env.execute(action)
 
-        # Test every 100 episode
-        if episode % 100 == 0:
-            # Test
-            env.reset()
-            reward = 0
+    #         if step > 0:
+    #             reward = env.getReward()
+    #             next_state = env.getState()
+    #             td_error = critic.train_Q_network(
+    #                 state, reward, next_state)
+    #             # true_gradient = grad[logPi(s,a) * td_error]
+    #             actor.learn(state, 1, td_error)
+    #             state = next_state
 
-            for step in range(STEP):
-                reward += env.getReward()
-            print(reward)
+    #     # Test every 100 episode
+    #     if episode % 100 == 0:
+    #         # Test
+    #         env.reset()
+    #         reward = 0
+
+    #         for step in range(STEP):
+    #             reward += env.getReward()
+    #         print(reward)
 
 
