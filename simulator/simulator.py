@@ -5,8 +5,8 @@ import time
 
 class Env:
     def __init__(self, variables=None, metrics="QPS", hostname="47.96.140.67", username="root", password="8888"):
-        self.variables = variables          # Knobs to set
-        self.metrics = metrics              # Metrics for evaluating performance
+        self.variables = variables                              # Knobs to set
+        self.metrics = metrics                                  # Metrics for evaluating performance
         self.mydb = self.login(hostname, username, password)
         self.cursor = self.mydb.cursor()
     
@@ -102,4 +102,7 @@ class Env:
             command = "drop table " + table + ";"
             self.execute(command)
         return
-    
+
+    def close(self):
+        self.cursor.close()
+        self.mydb.close()
