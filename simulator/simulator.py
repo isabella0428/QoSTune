@@ -2,6 +2,7 @@ import mysql.connector
 import numpy as np
 import pickle
 import time
+import os
 
 class Env:
     def __init__(self, variables=None, metrics="QPS", hostname="47.96.140.67", username="root", password="8888"):
@@ -9,6 +10,8 @@ class Env:
         self.metrics = metrics                                  # Metrics for evaluating performance
         self.mydb = self.login(hostname, username, password)
         self.cursor = self.mydb.cursor()
+        self.sysbench_clean()
+        # self.sysbench_prepare()
     
     def saveDefaultSetting(self):
         """
@@ -102,6 +105,35 @@ class Env:
             command = "drop table " + table + ";"
             self.execute(command)
         return
+    
+    def sysbench_prepare(self):
+        command = "sysbench --test=oltp --mysql-table-engine=innodb --oltp-table-size=1000000 --mysql-host=47.96.140.67 --mysql-user=root --mysql-password=8888 --mysql-socket=/var/lib/mysql/mysql.sock  prepare"
+        os.system(command)
+
+    def sysbench_test(self):
+        command = "sysbench --test=oltp --mysql-table-engine=innodb --oltp-table-size=1000000 --mysql-host=47.96.140.67 --mysql-user=root --mysql-password=8888 --mysql-socket=/var/lib/mysql/mysql.sock --max-time=3 run > test.txt"
+        #os.system(command)
+
+        f = open("test.txt", "r")
+        lines = f.readlines()
+    
+        avg_request_time = 0
+
+        for line in lines:
+            line = line.strip()
+            items = line.split(" ")
+            for item in items:
+                if item == "avg:":
+                    avg_request_time = items[-1]
+                    break
+        
+        
+        avg_request_time = float(avg_request_time.split("ms")[0])
+        print(avg_request_time)
+
+    def sysbench_clean(self):
+        command="./sysbench --test=oltp --num-threads=5 cleanup"
+        os.system(command)
 
     def close(self):
         self.cursor.close()

@@ -42,3 +42,16 @@ QoSTune project -- Using RL to find a better database configuration
 #### 3. Train model
 
 - [ ] Use data from Step2 and train RL model
+
+
+
+#### Sysbench
+1. Prepare Data
+sysbench --test=oltp --mysql-table-engine=innodb --oltp-table-size=1000000 --mysql-host=47.96.140.67 --mysql-user=root --mysql-password=8888 --mysql-socket=/var/lib/mysql/mysql.sock  prepare
+
+
+2. Run test
+sysbench --test=oltp --mysql-table-engine=innodb --oltp-table-size=1000000 --mysql-host=47.96.140.67 --mysql-user=root --mysql-password=8888 --mysql-socket=/var/lib/mysql/mysql.sock  --max-time=3 --num-threads=20 run
+
+
+

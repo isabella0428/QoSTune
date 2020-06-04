@@ -25,9 +25,10 @@ Not test run yet, some functions are remained empty
 if __name__ == "__main__":
     # Initialize environment
     env = Env()
+    env.sysbench_test()
 
     # env.saveDefaultSetting()
-    print(env.getDefaultSetting())
+    # print(env.getDefaultSetting())
 
     # # Create Actor, Critic
     # sess = tf.InteractiveSession()
