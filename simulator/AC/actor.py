@@ -8,13 +8,13 @@ GAMMA = 0.95  # discount factor
 LEARNING_RATE = 0.01
 
 class Actor():
-    def __init__(self, env, sess):
+    def __init__(self, env, sess, state_dim=11, action_dim = 2):
         self.time_step = 0
         # state = [upCarNum, downCarNum, leftCarNum, rightCarNum,
         #   upOrderNum, downOrderNum, leftOrderNum, rightOrderNum, d.city_time]
-        self.state_dim = 9
+        self.state_dim = state_dim
         # action 0: Onlien action 1: Offline
-        self.action_dim = 2             # Set to online or set to offline
+        self.action_dim = action_dim            # Set to online or set to offline
         self.create_softmax_network()
 
         # Init Session
@@ -60,10 +60,14 @@ class Actor():
         return 1
 
     def learn(self, state, action, td_error):
-        s = state[np.newaxis, :]
+        s = np.array(state)
+        s = np.reshape(s, [1, self.state_dim])
         one_hot_action = np.zeros(self.action_dim)
         one_hot_action[action] = 1
-        a = one_hot_action[np.newaxis, :]
+        a = np.array(one_hot_action)
+        a = np.reshape(a, [1, self.action_dim])
+        td_error = np.reshape(np.array(td_error), [1, ])
+
         # Train on an episode
         self.session.run(self.train_op, feed_dict={
             self.state_input: s,

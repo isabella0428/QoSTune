@@ -10,14 +10,14 @@ REPLACE_TARGET_FREQ = 10  # frequency to update target Q network
 GAMMA = 0.95
 
 class Critic():
-    def __init__(self, env, sess):
+    def __init__(self, env, sess, state_dim = 11, action_dim = 2):
         # init some parameters
         self.time_step = 0
         self.epsilon = EPSILON
         # state = [upCarNum, downCarNum, leftCarNum, rightCarNum,
         #   upOrderNum, downOrderNum, leftOrderNum, rightOrderNum, d.city_time]
-        self.state_dim = 9
-        self.action_dim = 2
+        self.state_dim = state_dim
+        self.action_dim = action_dim
 
         self.create_Q_Network()
         self.create_training_method()
@@ -56,7 +56,13 @@ class Critic():
             self.train_op = tf.train.AdamOptimizer(self.epsilon).minimize(self.loss)
 
     def train_Q_newtork(self, state, reward, next_state):
-        s, s_ = state[np.newaxis, :], next_state[np.newaxis, :]
+        # state = np.array(state)
+        # next_state = np.array(next_state)
+        # s, s_ = state[np.newaxis, :], next_state[np.newaxis, :]
+        # print(s)
+        s, s_ = np.array(state), np.array(next_state)
+        s, s_ = np.reshape(s, [1, self.state_dim]), np.reshape(s_, [1, self.state_dim])
+
         v_ = self.session.run(self.Q_value, {self.state_input: s_})
         td_error, _ = self.session.run([self.td_error, self.train_op],
                                        {self.state_input: s, self.next_value: v_, self.reward: reward})
