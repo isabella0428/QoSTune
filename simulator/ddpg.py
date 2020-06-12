@@ -47,10 +47,10 @@ class DDPG(object):
         self.S_ = tf.placeholder(tf.float32, [None, s_dim], 's_')
         self.R = tf.placeholder(tf.float32, [None, 1], 'r')
 
-        with tf.variable_scope('Actor'):
+        with tf.variable_scope('Actor', reuse=tf.AUTO_REUSE):
             self.a = self._build_a(self.S, scope='eval', trainable=True)
             a_ = self._build_a(self.S_, scope='target', trainable=False)
-        with tf.variable_scope('Critic'):
+        with tf.variable_scope('Critic', reuse=tf.AUTO_REUSE):
             # assign self.a = a in memory when calculating q for td_error,
             # otherwise the self.a is from Actor when updating Actor
             q = self._build_c(self.S, self.a, scope='eval', trainable=True)

@@ -7,6 +7,7 @@ from sklearn.feature_selection import SelectFromModel
 from sklearn.linear_model import Lasso
 from sklearn.cluster import KMeans
 from simulator import *
+from run import *
 
 def factorAnalysis(data):
     transformer = FactorAnalysis(n_components=100, random_state=0)
@@ -22,11 +23,10 @@ def generate_knobs(variables, unit, lowerBound, higherBound):
         knobs[var] = random.randint(lb, hb) * u
     return knobs
 
-def correlation(metrics, knobs, knobsName):
+def correlation(metrics, knobs, knobsName, lowerBound, higherBound, unit):
     # Not sure the metrics
-    # Intended:                 metrics: row: single metrics     knobs: row: knobs
+    # Intended:                                     metrics: row: single metrics     knobs: row: knobs
     pearson = np.zeros(knobs.shape[0])
-
     # print(metrics)
 
     for i in range(metrics.shape[0]):
@@ -54,38 +54,40 @@ def correlation(metrics, knobs, knobsName):
 
     sortedDict = sorted(pDict.items(),  key=lambda d: d[1], reverse=False)
 
-    selected = []
+    selected_knobs, selected_unit, selected_lb, selected_hb = [], [], [], []
     topK = 10
 
     for item in sortedDict:
-        selected.append(knobsName[item[0]])
-        if len(selected) >= topK:
+        i = item[0]
+        selected_knobs.append(knobsName[i])
+        selected_unit.append(unit[i])
+        selected_lb.append(lowerBound[i])
+        selected_hb.append(higherBound[i])
+        if len(selected_knobs) >= topK:
             break
     
-    return selected
+    return selected_knobs, selected_unit, selected_lb, selected_hb
 
 if __name__ == "__main__":
+    # All potential knobs
     knobs = pd.read_csv("knobs.csv", dtype={"unit":np.int32, "lb":np.int32, "hb":np.int32})
     variables = list(knobs["knobs"])
-
     lowerBound, higherBound = list(knobs["lb"]), list(knobs["hb"])
     unit = list(knobs["unit"])
-
-    # variables = ["sort_buffer_size", "read_buffer_size", "tmp_table_size", 
-    #     "preload_buffer_size", "transaction_prealloc_size"]
-    # unit = [8 * 1024, 8 * 1024, 10000, 2*1024, 1024]
-    # lowerBound = [1, 1, 100, 1, 1]
-    # higherBound = [32, 32, 100000000, 100, 10]
 
     # Create environment
     env = Env(variables=variables, unit=unit)
 
+    # Memory Pool
+    queryMemoryPool = []
+    knobsMemoryPool = []
+
     epoches,times = 3, 10
 
     for e in range(epoches):
-        queries, _ = env.generateQuery()
-        metricsMat = []                     # Row: one time matrix, Column:     metrics value in different configuration
-        knobsMat = []                        # Row: knob, Column:    knob value in different configuration
+        queries, queryVec = env.generateQuery()
+        metricsMat = []                              # Row: one time matrix, Column:     metrics value in different configuration
+        knobsMat = []                                # Row: knob, Column:    knob value in different configuration
         metricsNum = 0
         metricsDict = {}
 
@@ -141,8 +143,6 @@ if __name__ == "__main__":
         for i, selectedId in enumerate(selectedMetrics):
             selectedMetricsName.append(metricsName[selectedId])
 
-        print(selectedMetricsName)
-
         important_metrics = []
         for row in metricsMat:
             temp = []
@@ -154,7 +154,18 @@ if __name__ == "__main__":
         important_metrics = np.transpose(important_metrics)
         knobsMat = np.transpose(knobsMat)
 
-        selectedKnobs = correlation(important_metrics, knobsMat, knobsName)
+
+        selectedKnobs, selectedUnit, selectedLb, selectedHb = correlation(
+                important_metrics, knobsMat, knobsName, lowerBound, higherBound, unit)
+
+        val = train(selectedKnobs, selectedLb, selectedHb, selectedUnit)
+        
         print(selectedKnobs)
+        print(val)
+        print()
+        queryMemoryPool.append(queryVec)
+        knobsMemoryPool.append([selectedKnobs, val])
+
+
         
-        
+
