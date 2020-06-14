@@ -8,6 +8,7 @@ from sklearn.linear_model import Lasso
 from sklearn.cluster import KMeans
 from simulator import *
 from run import *
+import pickle
 
 def factorAnalysis(data):
     transformer = FactorAnalysis(n_components=100, random_state=0)
@@ -49,13 +50,12 @@ def correlation(metrics, knobs, knobsName, lowerBound, higherBound, unit):
     for i, knob in enumerate(knobs):
         pDict[i] = pearson[i]
     
-    topK = 3
     selected = []
 
     sortedDict = sorted(pDict.items(),  key=lambda d: d[1], reverse=False)
 
     selected_knobs, selected_unit, selected_lb, selected_hb = [], [], [], []
-    topK = 10
+    topK = 5
 
     for item in sortedDict:
         i = item[0]
@@ -82,7 +82,7 @@ if __name__ == "__main__":
     queryMemoryPool = []
     knobsMemoryPool = []
 
-    epoches,times = 3, 10
+    epoches,times = 300, 30
 
     for e in range(epoches):
         queries, queryVec = env.generateQuery()
@@ -166,6 +166,9 @@ if __name__ == "__main__":
         queryMemoryPool.append(queryVec)
         knobsMemoryPool.append([selectedKnobs, val])
 
-
+    with open("pickle/queryMemoryPool.pkl", "wb") as f:
+        pickle.dump(queryMemoryPool, f)
+    with open("pickle/knobsMemoryPool.pkl", "wb") as f:
+        pickle.dump(knobsMemoryPool, f)
         
 

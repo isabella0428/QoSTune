@@ -10,6 +10,7 @@ from simulator import Env
 from AC.actor import *
 from AC.critic import *
 from ddpg import *
+from tensorflow.python.framework import ops
 
 #####################  hyper parameters  ####################
 
@@ -34,6 +35,7 @@ def train(var, a_lb, a_hb, unit):
     s_dim = 5 + len(var)                                         # [insert, delete, update, select, var, latency]
     a_dim = len(var)                                             # action -> continuous value
 
+    ops.reset_default_graph()
     env = Env(variables=var, unit=unit)
     ddpg = DDPG(a_dim = a_dim, s_dim=s_dim, a_bound=a_hb)
 
@@ -44,6 +46,9 @@ def train(var, a_lb, a_hb, unit):
     # for episode in range(MAX_EPISODES):
     s = env.reset()
     r = 0
+    max_r = -10000000
+    best_a = []
+
     #     ep_reward = 0
     for j in range(MAX_EP_STEPS):
         # Add exploration noise
@@ -51,6 +56,9 @@ def train(var, a_lb, a_hb, unit):
         for t in range(a_dim):
             a[t] = np.clip(np.random.normal(a[t], var), a_lb[t], a_hb[t])    # add randomness to action selection for exploration
         s_, r, done, info = env.step(a)
+        if r > max_r:
+            max_r = r
+            best_a = a
 
         ddpg.store_transition(s, a, r / 10, s_)
 
@@ -59,10 +67,10 @@ def train(var, a_lb, a_hb, unit):
             ddpg.learn()
 
         s = s_
-    print("Final reward is : " + str(r))
+    print("Final reward is : " + str(max_r))
         # ep_reward += r
     
-    return ddpg.choose_action(s)
+    return best_a
         # if j == MAX_EP_STEPS-1:
         #     print('Episode:', episode, ' Reward: %i' % int(ep_reward), 'Explore: %.2f' % var, )
             # if ep_reward > -300:RENDER = True

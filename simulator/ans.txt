@@ -1,0 +1,1867 @@
+WARNING:tensorflow:From /home/fwq/vic/QoSTune/simulator/ddpg.py:43: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
+
+2020-06-13 11:34:15.841125: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2020-06-13 11:34:19.368760: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: GeForce RTX 2080 Ti major: 7 minor: 5 memoryClockRate(GHz): 1.545
+pciBusID: 0000:3d:00.0
+2020-06-13 11:34:19.369573: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 1 with properties: 
+name: GeForce RTX 2080 Ti major: 7 minor: 5 memoryClockRate(GHz): 1.545
+pciBusID: 0000:42:00.0
+2020-06-13 11:34:19.370336: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 2 with properties: 
+name: GeForce RTX 2080 Ti major: 7 minor: 5 memoryClockRate(GHz): 1.545
+pciBusID: 0000:b2:00.0
+2020-06-13 11:34:19.371087: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 3 with properties: 
+name: GeForce RTX 2080 Ti major: 7 minor: 5 memoryClockRate(GHz): 1.545
+pciBusID: 0000:b5:00.0
+2020-06-13 11:34:19.371203: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.0'; dlerror: libcudart.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/clang-7.0.1/lib:/usr/local/clang-7.0.1/lib:/usr/local/cuda/lib64
+2020-06-13 11:34:19.371276: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcublas.so.10.0'; dlerror: libcublas.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/clang-7.0.1/lib:/usr/local/clang-7.0.1/lib:/usr/local/cuda/lib64
+2020-06-13 11:34:19.371343: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcufft.so.10.0'; dlerror: libcufft.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/clang-7.0.1/lib:/usr/local/clang-7.0.1/lib:/usr/local/cuda/lib64
+2020-06-13 11:34:19.371400: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcurand.so.10.0'; dlerror: libcurand.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/clang-7.0.1/lib:/usr/local/clang-7.0.1/lib:/usr/local/cuda/lib64
+2020-06-13 11:34:19.371457: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusolver.so.10.0'; dlerror: libcusolver.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/clang-7.0.1/lib:/usr/local/clang-7.0.1/lib:/usr/local/cuda/lib64
+2020-06-13 11:34:19.371511: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusparse.so.10.0'; dlerror: libcusparse.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/clang-7.0.1/lib:/usr/local/clang-7.0.1/lib:/usr/local/cuda/lib64
+2020-06-13 11:34:19.371567: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudnn.so.7'; dlerror: libcudnn.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/clang-7.0.1/lib:/usr/local/clang-7.0.1/lib:/usr/local/cuda/lib64
+2020-06-13 11:34:19.371577: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1641] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2020-06-13 11:34:19.371987: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2020-06-13 11:34:19.400830: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2400000000 Hz
+2020-06-13 11:34:19.403923: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55c0d7e2e9b0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-06-13 11:34:19.404006: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-06-13 11:34:19.997974: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55c0d795b770 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2020-06-13 11:34:19.998049: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): GeForce RTX 2080 Ti, Compute Capability 7.5
+2020-06-13 11:34:19.998072: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (1): GeForce RTX 2080 Ti, Compute Capability 7.5
+2020-06-13 11:34:19.998089: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (2): GeForce RTX 2080 Ti, Compute Capability 7.5
+2020-06-13 11:34:19.998107: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (3): GeForce RTX 2080 Ti, Compute Capability 7.5
+2020-06-13 11:34:19.998835: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:34:19.998869: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+WARNING:tensorflow:From /home/fwq/vic/QoSTune/simulator/ddpg.py:46: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+WARNING:tensorflow:From /home/fwq/vic/QoSTune/simulator/ddpg.py:50: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+
+WARNING:tensorflow:From /home/fwq/vic/QoSTune/simulator/ddpg.py:107: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.Dense instead.
+WARNING:tensorflow:From /home/fwq/miniconda3/envs/dgl/lib/python3.6/site-packages/tensorflow_core/python/layers/core.py:187: Layer.apply (from tensorflow.python.keras.engine.base_layer) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `layer.__call__` method instead.
+WARNING:tensorflow:From /home/fwq/vic/QoSTune/simulator/ddpg.py:114: The name tf.get_variable is deprecated. Please use tf.compat.v1.get_variable instead.
+
+WARNING:tensorflow:From /home/fwq/vic/QoSTune/simulator/ddpg.py:60: The name tf.get_collection is deprecated. Please use tf.compat.v1.get_collection instead.
+
+WARNING:tensorflow:From /home/fwq/vic/QoSTune/simulator/ddpg.py:60: The name tf.GraphKeys is deprecated. Please use tf.compat.v1.GraphKeys instead.
+
+WARNING:tensorflow:From /home/fwq/vic/QoSTune/simulator/ddpg.py:67: The name tf.assign is deprecated. Please use tf.compat.v1.assign instead.
+
+WARNING:tensorflow:From /home/fwq/vic/QoSTune/simulator/ddpg.py:71: The name tf.losses.mean_squared_error is deprecated. Please use tf.compat.v1.losses.mean_squared_error instead.
+
+WARNING:tensorflow:From /home/fwq/miniconda3/envs/dgl/lib/python3.6/site-packages/tensorflow_core/python/ops/losses/losses_impl.py:121: where (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+WARNING:tensorflow:From /home/fwq/vic/QoSTune/simulator/ddpg.py:72: The name tf.train.AdamOptimizer is deprecated. Please use tf.compat.v1.train.AdamOptimizer instead.
+
+WARNING:tensorflow:From /home/fwq/vic/QoSTune/simulator/ddpg.py:77: The name tf.global_variables_initializer is deprecated. Please use tf.compat.v1.global_variables_initializer instead.
+
+2020-06-13 11:35:11.153578: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:35:11.153631: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:36:08.167042: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:36:08.167091: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:37:02.983654: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:37:02.983706: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:37:57.825246: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:37:57.825301: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:38:53.591047: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:38:53.591098: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:39:42.450542: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:39:42.450596: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:40:35.912673: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:40:35.912724: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:41:29.117354: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:41:29.117410: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:42:24.584394: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:42:24.584446: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:43:16.737628: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:43:16.737681: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:44:07.944550: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:44:07.944602: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:45:05.136419: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:45:05.136471: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:45:57.481911: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:45:57.481959: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:46:52.247860: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:46:52.247908: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:47:47.201118: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:47:47.201170: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:48:35.566209: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:48:35.566256: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:49:31.302485: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:49:31.302545: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:50:26.118378: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:50:26.118432: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:51:17.442433: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:51:17.442481: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:51:59.828516: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:51:59.828559: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:52:47.587853: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:52:47.587907: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:53:35.887496: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:53:35.887541: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:54:26.382790: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:54:26.382842: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:55:18.591758: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:55:18.591815: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:56:14.303793: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:56:14.303841: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:57:08.233592: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:57:08.233647: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:58:02.110659: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:58:02.110712: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:58:58.005669: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:58:58.005721: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 11:59:50.432973: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 11:59:50.433023: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:00:40.083496: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:00:40.083548: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:01:36.301151: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:01:36.301206: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:02:30.053150: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:02:30.053196: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:03:20.465628: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:03:20.465682: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:04:15.302482: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:04:15.302538: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:05:06.042942: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:05:06.043005: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:06:01.914488: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:06:01.914544: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:06:55.763381: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:06:55.763439: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+Final reward is : 8.762626792952096
+['query_alloc_block_size', 'default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.3105823e+05 2.7421889e+00 1.0000000e+08 3.1536000e+07 9.8590082e+02]
+
+Final reward is : 18.980684285393426
+['read_buffer_size', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[2.824341e+01 1.310710e+05 0.000000e+00 1.000000e+00 9.802925e+02]
+
+Final reward is : -2.0474834316071897
+['read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[2.8100790e+01 9.9999976e+07 1.0000000e+00 0.0000000e+00 0.0000000e+00]
+
+Final reward is : 2.0428950301725797
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.0000000e+00 3.1535988e+07 9.9339673e+02 0.0000000e+00 4.2949034e+05]
+
+Final reward is : 1.11505021868952
+['bulk_insert_buffer_size', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.00000000e+01 1.31047625e+05 1.00000000e+08 1.00000000e+00
+ 1.00000000e+03]
+
+Final reward is : 4.095915557595227
+['default_week_format', 'bulk_insert_buffer_size', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[   0. 1000.    1.    0.    1.]
+
+Final reward is : 8.599992525320477
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[9.9999984e+07 3.1535982e+07 0.0000000e+00 6.5535000e+04 4.2948803e+05]
+
+Final reward is : 6.75477479987218
+['bulk_insert_buffer_size', 'read_buffer_size', 'query_alloc_block_size', 'div_precision_increment', 'eq_range_index_dive_limit']
+[10. 32.  1.  0.  0.]
+
+Final reward is : 2.12967659062146
+['default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[2.5774484e+00 0.0000000e+00 1.0000000e+00 1.0000000e+03 6.5535000e+04]
+
+Final reward is : 7.297680475371439
+['query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000e+00 0.0000e+00 3.1536e+07 0.0000e+00 0.0000e+00]
+
+Final reward is : 1.3483985244321537
+['query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.000000e+00 9.999999e+07 3.153600e+07 0.000000e+00 6.553500e+04]
+
+Final reward is : 7.186727235797259
+['bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000e+01 0.0000e+00 3.1536e+07 1.0000e+03 6.5535e+04]
+
+Final reward is : 9.64801022305719
+['bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[9.956307e+02 1.000000e+08 1.000000e+00 1.000000e+03 0.000000e+00]
+
+Final reward is : 2.0711939988402057
+['read_buffer_size', 'bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[2.5586794e+01 1.0000000e+01 1.0000000e+08 1.0000000e+00 9.7850244e+02]
+
+Final reward is : 3.8462855772853377
+['query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000e+00 1.0000e+08 3.1536e+07 1.0000e+03 0.0000e+00]
+
+Final reward is : 12.116412227767528
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[1.0000e+08 3.1536e+07 0.0000e+00 0.0000e+00 2.0000e+00]
+
+Final reward is : -1.103704070471415
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.0000000e+00 3.1536000e+07 9.9590820e+02 0.0000000e+00 4.2949447e+05]
+
+Final reward is : 1.408176929223991
+['bulk_insert_buffer_size', 'read_buffer_size', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[9.762872e+02 3.200000e+01 1.310601e+05 1.000000e+08 1.000000e+00]
+
+Final reward is : 8.24043201309812
+['read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[3.200000e+01 0.000000e+00 3.153600e+07 9.740417e+02 6.552425e+04]
+
+Final reward is : 1.736765420106848
+['bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000e+01 0.0000e+00 3.1536e+07 0.0000e+00 6.5535e+04]
+
+Final reward is : 1.6309887869520898
+['div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[3.0000000e+01 9.9999992e+07 3.1535986e+07 0.0000000e+00 6.5535000e+04]
+
+Final reward is : 6.93066697589104
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.0000e+00 3.1536e+07 0.0000e+00 6.5535e+04 2.0000e+00]
+
+Final reward is : 16.744055156887576
+['default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[0.0000000e+00 0.0000000e+00 1.0000000e+00 9.9176117e+02 6.5520129e+04]
+
+Final reward is : -0.28537489343031325
+['read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[  24.488602    0.          1.       1000.          0.      ]
+
+Final reward is : 12.109103162336188
+['bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.000000e+03 0.000000e+00 3.153600e+07 1.000000e+03 6.553069e+04]
+
+Final reward is : 7.549553633933155
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.0000000e+00 3.1535996e+07 1.0000000e+03 0.0000000e+00 4.2949600e+05]
+
+Final reward is : 5.830420725012842
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[9.999999e+07 1.000000e+00 0.000000e+00 0.000000e+00 2.000000e+00]
+
+Final reward is : 0.9193430656934306
+['read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[2.0371862e+01 0.0000000e+00 3.1535996e+07 9.9496021e+02 0.0000000e+00]
+
+Final reward is : 8.46399196599693
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[1.0000000e+08 3.1535986e+07 0.0000000e+00 6.5535000e+04 2.0000000e+00]
+
+Final reward is : 0.18353509176754587
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.0000000e+00 3.1535992e+07 0.0000000e+00 6.5535000e+04 2.0000000e+00]
+
+Final reward is : 2.2026148000257617
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[1.0000000e+08 1.0000000e+00 9.9863385e+02 0.0000000e+00 2.0000000e+00]
+
+Final reward is : 9.397721303457896
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.0000e+00 3.1536e+07 0.0000e+00 6.5535e+04 2.0000e+00]
+
+Final reward is : 6.786600439584542
+['read_buffer_size', 'query_alloc_block_size', 'default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[1.000000e+00 1.000000e+00 5.737102e+00 1.000000e+08 3.153600e+07]
+
+Final reward is : -0.6711580536416444
+['bulk_insert_buffer_size', 'read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[9.9611243e+02 1.0000000e+00 1.0000000e+08 3.1535998e+07 9.9438550e+02]
+
+Final reward is : 10.34713616819554
+['query_alloc_block_size', 'read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.0000e+00 1.0000e+00 0.0000e+00 3.1536e+07 1.0000e+03]
+
+Final reward is : 3.808100443831303
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[       0. 31535994.        0.    65535.   429496.]
+
+Final reward is : 6.467146447489067
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.0000000e+00 1.0000000e+00 9.9688196e+02 6.5535000e+04 4.2948944e+05]
+
+Final reward is : 1.0191945608389479
+['default_week_format', 'query_alloc_block_size', 'bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[  4.7520995   1.        994.2213      0.          1.       ]2020-06-13 12:07:51.605097: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:07:51.605149: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:08:40.619699: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:08:40.619754: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:09:32.482286: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:09:32.482334: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:10:21.957134: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:10:21.957186: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:11:20.427827: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:11:20.427876: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:12:16.131626: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:12:16.131678: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:13:11.622751: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:13:11.622808: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:14:11.222422: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:14:11.222473: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:15:06.561577: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:15:06.561624: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:16:02.558581: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:16:02.558635: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:16:53.070022: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:16:53.070074: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:17:42.996560: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:17:42.996607: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:18:33.546802: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:18:33.546853: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:19:28.842119: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:19:28.842166: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:20:20.597192: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:20:20.597238: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:21:18.458585: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:21:18.458633: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:22:14.206575: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:22:14.206628: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:23:06.208762: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:23:06.208807: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:23:53.194667: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:23:53.194713: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:24:39.574782: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:24:39.574832: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:25:31.994641: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:25:31.994693: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:26:33.409811: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:26:33.409856: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:27:25.234335: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:27:25.234382: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:28:19.571894: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:28:19.571942: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:29:13.822855: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:29:13.822906: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:30:03.321946: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:30:03.321991: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:30:55.113093: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:30:55.113140: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:31:51.649851: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:31:51.649901: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:32:46.556630: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:32:46.556679: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:33:40.617033: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:33:40.617087: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:34:31.143695: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:34:31.143742: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:35:21.444323: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:35:21.444372: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:36:15.882058: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:36:15.882111: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:37:13.210326: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:37:13.210369: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:38:01.748899: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:38:01.748946: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:38:51.282347: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:38:51.282402: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:39:47.417906: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:39:47.417959: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:40:41.922148: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:40:41.922201: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:41:32.323141: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:41:32.323190: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+
+
+Final reward is : 2.375897102949692
+['read_buffer_size', 'default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[  1.        0.        0.        1.      998.11176]
+
+Final reward is : 11.08848523402225
+['default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[2.2240357e+00 9.9999992e+07 1.0000000e+00 0.0000000e+00 0.0000000e+00]
+
+Final reward is : 1.392830961824026
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[       0. 31536000.        0.        0.   429496.]
+
+Final reward is : -0.5701987549945982
+['read_buffer_size', 'bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[   1. 1000.    0.    1.    0.]
+
+Final reward is : 7.017371475813092
+['read_buffer_size', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1. 1. 0. 1. 0.]
+
+Final reward is : 6.99980556095664
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.0000000e+00 3.1535994e+07 9.8979974e+02 6.5530250e+04 4.2948909e+05]
+
+Final reward is : -1.7734502602363496
+['bulk_insert_buffer_size', 'default_week_format', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[1.00000000e+01 7.00000000e+00 1.31064484e+05 0.00000000e+00
+ 3.15360000e+07]
+
+Final reward is : -0.51036410745943
+['query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.3106727e+05 0.0000000e+00 1.0000000e+00 9.9703925e+02 6.5533625e+04]
+
+Final reward is : 0.24578668155145808
+['div_precision_increment', 'read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[0.0000000e+00 3.2000000e+01 0.0000000e+00 3.1535976e+07 1.0000000e+03]
+
+Final reward is : 0.5616779525309707
+['query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1. 0. 1. 0. 0.]
+
+Final reward is : 0.29277813923227064
+['read_buffer_size', 'default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[3.2e+01 0.0e+00 1.0e+08 1.0e+00 0.0e+00]
+
+Final reward is : 2.1803053053053056
+['query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.e+00 1.e+08 1.e+00 0.e+00 0.e+00]
+
+Final reward is : 5.756834165811029
+['div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[0.0000000e+00 9.9999976e+07 1.0000000e+00 0.0000000e+00 6.5524020e+04]
+
+Final reward is : 1.3983995381432717
+['query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[  131071.        0. 31536000.        0.    65535.]
+
+Final reward is : 4.891929179121638
+['query_alloc_block_size', 'div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.000000e+00 0.000000e+00 1.000000e+08 1.000000e+00 9.987227e+02]
+
+Final reward is : 7.991888223293317
+['bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000e+03 1.0000e+08 3.1536e+07 0.0000e+00 0.0000e+00]
+
+Final reward is : 8.30218392251334
+['default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[0.e+00 1.e+08 1.e+00 0.e+00 0.e+00]
+
+Final reward is : 12.049485125858125
+['query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.3107100e+05 0.0000000e+00 3.1535998e+07 9.9948700e+02 6.5535000e+04]
+
+Final reward is : 1.4533853243530663
+['default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[0.000000e+00 9.999999e+07 1.000000e+00 1.000000e+03 6.551919e+04]
+
+Final reward is : 4.80834765246273
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.0000000e+00 3.1536000e+07 1.0000000e+03 6.5535000e+04 4.2948184e+05]
+
+Final reward is : 0.3122837018036725
+['read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000000e+00 1.0000000e+08 1.0000000e+00 9.8817529e+02 6.5525848e+04]
+
+Final reward is : 9.01809166631551
+['read_buffer_size', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[3.0125347e+01 1.3107100e+05 1.0000000e+08 1.0000000e+00 0.0000000e+00]
+
+Final reward is : 0.6900915655475323
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.0000000e+00 3.1535992e+07 1.0000000e+03 6.5526664e+04 2.0000000e+00]
+
+Final reward is : 13.753730553984392
+['read_buffer_size', 'div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[  1.        28.428875   0.         1.       996.6709  ]
+
+Final reward is : 7.424895944847437
+['read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000e+00 1.0000e+08 3.1536e+07 0.0000e+00 0.0000e+00]
+
+Final reward is : 8.3391798438018
+['div_precision_increment', 'read_buffer_size', 'query_alloc_block_size', 'default_week_format', 'eq_range_index_dive_limit']
+[0.0000000e+00 3.0582186e+01 1.3107100e+05 0.0000000e+00 1.0000000e+08]
+
+Final reward is : 9.30781914860767
+['read_buffer_size', 'query_alloc_block_size', 'div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[1.0000000e+00 1.3106464e+05 1.8701662e+01 0.0000000e+00 3.1535972e+07]
+
+Final reward is : 9.778574630210668
+['query_alloc_block_size', 'bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[  1.     992.5254   0.       1.     996.6999]
+
+Final reward is : 8.716175527885158
+['query_alloc_block_size', 'div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.0000000e+00 2.8699778e+01 0.0000000e+00 3.1536000e+07 0.0000000e+00]
+
+Final reward is : 11.814559623131618
+['bulk_insert_buffer_size', 'read_buffer_size', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[1.0000000e+01 2.8616924e+01 1.0000000e+00 0.0000000e+00 3.1535998e+07]
+
+Final reward is : 8.119995648904423
+['div_precision_increment', 'read_buffer_size', 'query_alloc_block_size', 'bulk_insert_buffer_size', 'eq_range_index_dive_limit']
+[3.0000000e+01 1.0000000e+00 1.3105626e+05 1.0000000e+01 1.0000000e+08]
+
+Final reward is : 5.837422658416898
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[1.0000000e+08 3.1536000e+07 9.9332843e+02 6.5523504e+04 4.2949600e+05]
+
+Final reward is : 0.038838345098115366
+['default_week_format', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[0.0000000e+00 1.0000000e+00 1.0000000e+08 1.0000000e+00 9.9396893e+02]
+
+Final reward is : 0.010581959682733608
+['read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000e+00 0.0000e+00 1.0000e+00 1.0000e+03 6.5535e+04]
+
+Final reward is : 0.5811783524393495
+['read_buffer_size', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[8.425391e+00 1.310710e+05 9.999999e+07 1.000000e+00 0.000000e+00]
+
+Final reward is : 2.1629085621240494
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.000000e+00 1.000000e+00 0.000000e+00 0.000000e+00 4.294942e+05]
+
+Final reward is : 1.2778121308841008
+['div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[0.e+00 1.e+08 1.e+00 0.e+00 0.e+00]
+
+Final reward is : 8.481123856018549
+['query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000000e+00 0.0000000e+00 3.1536000e+07 0.0000000e+00 6.5534617e+04]
+
+Final reward is : 2.2542093417901286
+['query_alloc_block_size', 'default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']2020-06-13 12:42:26.130991: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:42:26.131045: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:43:23.417324: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:43:23.417374: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:44:08.396534: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:44:08.396581: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:44:54.625449: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:44:54.625493: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:45:39.770577: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:45:39.770627: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:46:31.290458: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:46:31.290516: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:47:20.575860: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:47:20.575910: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:48:16.648904: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:48:16.648955: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:49:10.205137: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:49:10.205194: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:50:04.176246: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:50:04.176333: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:50:58.061376: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:50:58.061441: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:51:54.164479: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:51:54.164532: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:52:47.406597: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:52:47.406651: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:53:40.642370: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:53:40.642421: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:54:30.375910: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:54:30.375963: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:55:22.003740: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:55:22.003793: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:56:15.901441: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:56:15.901493: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:57:08.015506: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:57:08.015554: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:57:59.855481: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:57:59.855530: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:58:53.061324: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:58:53.061373: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 12:59:45.822949: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 12:59:45.822999: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:00:45.580578: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:00:45.580630: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:01:37.242488: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:01:37.242536: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:02:27.065593: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:02:27.065646: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:03:20.558714: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:03:20.558763: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:04:15.088414: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:04:15.088465: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:05:06.026932: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:05:06.027024: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:06:01.703234: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:06:01.703296: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:06:55.130560: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:06:55.130612: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:07:43.587614: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:07:43.587667: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:08:31.662496: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:08:31.662544: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:09:27.442526: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:09:27.442584: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:10:22.022396: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:10:22.022453: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:11:14.808945: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:11:14.808997: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:12:09.076327: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:12:09.076381: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:13:04.735789: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:13:04.735834: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:13:59.574511: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:13:59.574569: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:14:55.437077: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:14:55.437132: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+
+[1.3107100e+05 0.0000000e+00 9.9999992e+07 1.0000000e+00 9.9891187e+02]
+
+Final reward is : 2.2106944768537633
+['div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[2.704077e+01 9.999998e+07 1.000000e+00 0.000000e+00 6.553500e+04]
+
+Final reward is : 2.1438544340854837
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[1.0000e+08 3.1536e+07 0.0000e+00 0.0000e+00 2.0000e+00]
+
+Final reward is : 5.515673852229719
+['read_buffer_size', 'query_alloc_block_size', 'div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[2.4398842e+01 1.0000000e+00 0.0000000e+00 1.0000000e+08 1.0000000e+00]
+
+Final reward is : 1.5570843856135157
+['bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000000e+03 0.0000000e+00 3.1535982e+07 0.0000000e+00 0.0000000e+00]
+
+Final reward is : -1.3510649570838191
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[1.000000e+08 1.000000e+00 9.958411e+02 0.000000e+00 4.294960e+05]
+
+Final reward is : 1.49742865786024
+['read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[3.2000000e+01 9.9999992e+07 1.0000000e+00 9.9678217e+02 6.5519668e+04]
+
+Final reward is : 1.5902978467500792
+['div_precision_increment', 'read_buffer_size', 'query_alloc_block_size', 'default_week_format', 'eq_range_index_dive_limit']
+[30.       15.161829  1.        7.        0.      ]
+
+Final reward is : 13.606695802001436
+['read_buffer_size', 'default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.0000000e+00 0.0000000e+00 0.0000000e+00 3.1535982e+07 0.0000000e+00]
+
+Final reward is : 6.079930769261876
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[1.0000000e+08 1.0000000e+00 1.0000000e+03 0.0000000e+00 4.2949462e+05]
+
+Final reward is : 37.421622475514624
+['query_alloc_block_size', 'bulk_insert_buffer_size', 'default_week_format', 'read_buffer_size', 'div_precision_increment']
+[   1. 1000.    0.    1.   30.]
+
+Final reward is : 3.7398224545924896
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[1.0000000e+08 3.1535986e+07 0.0000000e+00 6.5535000e+04 2.0000000e+00]
+
+Final reward is : 0.7077407654863034
+['div_precision_increment', 'read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[3.0000000e+01 1.0000000e+00 0.0000000e+00 3.1536000e+07 9.9066534e+02]
+
+Final reward is : -0.5008065061381396
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[99999980.   31535994.          0.          0.     429493.66]
+
+Final reward is : 7.027498453776607
+['default_week_format', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[7.e+00 1.e+00 1.e+08 1.e+00 0.e+00]
+
+Final reward is : 7.366615030924634
+['div_precision_increment', 'read_buffer_size', 'bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[ 0.  1. 10.  0.  1.]
+
+Final reward is : 4.219184381597374
+['bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000000e+01 1.0000000e+08 1.0000000e+00 0.0000000e+00 6.5528156e+04]
+
+Final reward is : 0.08135446138826868
+['div_precision_increment', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[3.00000e+01 1.31071e+05 1.00000e+08 3.15360e+07 1.00000e+03]
+
+Final reward is : 5.114591805675451
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.0000000e+00 3.1535996e+07 0.0000000e+00 6.5525980e+04 2.0000000e+00]
+
+Final reward is : 19.110803672494026
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[   0.    1. 1000.    0.    2.]
+
+Final reward is : 2.8317354573147053
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.0000000e+00 1.0000000e+00 0.0000000e+00 0.0000000e+00 4.2948994e+05]
+
+Final reward is : -0.19990384372074194
+['bulk_insert_buffer_size', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.e+01 1.e+00 1.e+08 1.e+00 0.e+00]
+
+Final reward is : 6.918092937925269
+['default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[0.0000e+00 1.0000e+08 3.1536e+07 0.0000e+00 6.5535e+04]
+
+Final reward is : 8.14468702167083
+['query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[  131071.        0. 31536000.        0.        0.]
+
+Final reward is : 2.309242729628563
+['query_alloc_block_size', 'div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.0000000e+00 0.0000000e+00 0.0000000e+00 3.1535984e+07 0.0000000e+00]
+
+Final reward is : 5.588231928503587
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[1.0000000e+08 1.0000000e+00 0.0000000e+00 0.0000000e+00 4.2948844e+05]
+
+Final reward is : -1.3455371034833137
+['bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.e+01 1.e+08 1.e+00 1.e+03 0.e+00]
+
+Final reward is : 11.66460396039604
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[9.999999e+07 1.000000e+00 0.000000e+00 6.553500e+04 2.000000e+00]
+
+Final reward is : 3.6958171310943833
+['query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.e+00 1.e+08 1.e+00 0.e+00 0.e+00]
+
+Final reward is : 8.671763430623026
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[9.9999992e+07 3.1536000e+07 9.8010364e+02 0.0000000e+00 4.2949131e+05]
+
+Final reward is : 19.661016949152543
+['query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.3107100e+05 0.0000000e+00 3.1535986e+07 9.9455286e+02 0.0000000e+00]
+
+Final reward is : -0.42023031853996906
+['bulk_insert_buffer_size', 'default_week_format', 'read_buffer_size', 'query_alloc_block_size', 'eq_range_index_dive_limit']
+[10.  0.  1.  1.  0.]
+
+Final reward is : 7.25604801719393
+['div_precision_increment', 'read_buffer_size', 'default_week_format', 'bulk_insert_buffer_size', 'eq_range_index_dive_limit']
+[2.4538717e+01 1.6918728e+01 0.0000000e+00 1.0000000e+01 9.9999984e+07]
+
+Final reward is : 7.687195969423211
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[1.0000000e+08 3.1536000e+07 9.9616125e+02 0.0000000e+00 4.2949312e+05]
+
+Final reward is : 4.310232975747479
+['default_week_format', 'read_buffer_size', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[7.0000000e+00 1.0000000e+00 1.3107064e+05 0.0000000e+00 3.1536000e+07]
+
+Final reward is : 5.6684517265430125
+['read_buffer_size', 'query_alloc_block_size', 'bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[1.0000000e+00 1.3107100e+05 1.0000000e+03 1.0000000e+08 3.1535992e+07]
+
+Final reward is : 11.584162278135361
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.0000000e+00 3.1535994e+07 1.0000000e+03 6.5535000e+04 4.2949600e+05]
+
+Final reward is : -0.9510510342773093
+['bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000000e+01 1.0000000e+08 3.1535998e+07 0.0000000e+00 6.5535000e+04]
+
+Final reward is : 1.4448491351884907
+['query_alloc_block_size', 'read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.000000e+00 1.000000e+00 9.999999e+07 3.153600e+07 1.000000e+03]2020-06-13 13:15:48.805103: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:15:48.805144: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:16:34.676746: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:16:34.676794: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:17:29.768384: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:17:29.768434: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:18:23.676632: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:18:23.676682: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:19:17.013265: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:19:17.013314: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:20:05.147135: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:20:05.147187: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:21:03.000103: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:21:03.000157: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:22:00.084301: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:22:00.084349: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:22:52.737569: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:22:52.737619: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:23:45.437423: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:23:45.437471: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:24:38.342831: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:24:38.342922: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:25:33.364766: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:25:33.364816: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:26:24.435348: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:26:24.435388: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:27:17.106259: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:27:17.106311: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:28:11.751008: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:28:11.751059: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:29:06.767450: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:29:06.767499: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:30:02.963675: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:30:02.963730: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:30:55.414921: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:30:55.414973: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:31:44.002392: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:31:44.002436: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:32:29.199933: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:32:29.199972: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:33:20.063697: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:33:20.063746: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:34:09.414007: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:34:09.414048: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:35:00.277788: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:35:00.277835: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:35:57.790405: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:35:57.790469: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:36:50.034149: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:36:50.034191: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:37:39.812749: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:37:39.812797: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:38:35.787177: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:38:35.787228: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:39:30.971643: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:39:30.971695: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:40:24.477800: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:40:24.477847: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:41:14.023172: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:41:14.023216: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:42:10.072433: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:42:10.072483: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:43:05.301319: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:43:05.301362: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:43:57.871190: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:43:57.871242: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:44:51.689296: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:44:51.689345: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:45:41.027326: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:45:41.027374: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:46:36.121398: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:46:36.121449: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:47:24.302647: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:47:24.302690: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:48:13.351174: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:48:13.351218: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+
+
+Final reward is : 9.384720727770715
+['default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[0.e+00 1.e+08 1.e+00 0.e+00 0.e+00]
+
+Final reward is : 17.076102933111027
+['query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.31068125e+05 1.00000000e+08 1.00000000e+00 1.00000000e+03
+ 0.00000000e+00]
+
+Final reward is : 8.32272000799121
+['default_week_format', 'read_buffer_size', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[0.0000000e+00 1.0000000e+00 1.3106403e+05 1.0000000e+08 1.0000000e+00]
+
+Final reward is : 15.82287215428822
+['query_alloc_block_size', 'default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.000000e+00 7.000000e+00 9.999999e+07 1.000000e+00 0.000000e+00]
+
+Final reward is : 21.018797937885076
+['bulk_insert_buffer_size', 'read_buffer_size', 'default_week_format', 'query_alloc_block_size', 'div_precision_increment']
+[1000.   32.    0.    1.    0.]
+
+Final reward is : 13.028707803830683
+['read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000e+00 1.0000e+08 1.0000e+00 1.0000e+03 6.5535e+04]
+
+Final reward is : 7.5204222766386835
+['default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[7.0000000e+00 1.0000000e+08 3.1535992e+07 9.9474280e+02 6.5535000e+04]
+
+Final reward is : 3.155919322921989
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.0000000e+00 1.0000000e+00 0.0000000e+00 6.5521504e+04 4.2949131e+05]
+
+Final reward is : 14.062090850586955
+['bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000000e+01 1.0000000e+08 3.1536000e+07 9.9629535e+02 6.5535000e+04]
+
+Final reward is : 1.298803156028925
+['default_week_format', 'query_alloc_block_size', 'bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[2.6109972e+00 1.0000000e+00 1.0000000e+03 0.0000000e+00 3.1536000e+07]
+
+Final reward is : 1.948866446382878
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[1.0000e+08 1.0000e+00 1.0000e+03 6.5535e+04 2.0000e+00]
+
+Final reward is : -0.645894073371967
+['default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[0.000000e+00 1.000000e+08 1.000000e+00 9.941283e+02 0.000000e+00]
+
+Final reward is : 6.218650484508044
+['div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[3.000000e+01 9.999999e+07 1.000000e+00 0.000000e+00 0.000000e+00]
+
+Final reward is : 8.953571204476416
+['bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.000000e+03 1.000000e+08 1.000000e+00 1.000000e+03 6.552372e+04]
+
+Final reward is : 3.0182338876172143
+['bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000000e+01 0.0000000e+00 3.1535988e+07 9.7386072e+02 6.5535000e+04]
+
+Final reward is : 0.06835678825630379
+['query_alloc_block_size', 'read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.0000e+00 3.2000e+01 0.0000e+00 3.1536e+07 1.0000e+03]
+
+Final reward is : 8.680593068998608
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[1.0000000e+08 3.1536000e+07 1.0000000e+03 6.5532266e+04 2.0000000e+00]
+
+Final reward is : 7.270595794326681
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[1.0000000e+08 3.1536000e+07 0.0000000e+00 6.5521707e+04 2.0000000e+00]
+
+Final reward is : 1.3261939890257448
+['div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[0.0000000e+00 0.0000000e+00 3.1535990e+07 1.0000000e+03 6.5528312e+04]
+
+Final reward is : 2.693929330995112
+['bulk_insert_buffer_size', 'div_precision_increment', 'read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[1000.    0.   32.    0.    1.]
+
+Final reward is : 2.4300070581117867
+['default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[0.000000e+00 0.000000e+00 3.153600e+07 9.841805e+02 0.000000e+00]
+
+Final reward is : 6.784536445248247
+['query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000000e+00 0.0000000e+00 3.1535998e+07 0.0000000e+00 6.5534812e+04]
+
+Final reward is : 8.837006241912455
+['default_week_format', 'read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[3.2714236 1.        0.        1.        0.       ]
+
+Final reward is : 3.1359743266733755
+['read_buffer_size', 'query_alloc_block_size', 'default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[1.00000e+00 1.31071e+05 7.00000e+00 1.00000e+08 3.15360e+07]
+
+Final reward is : 7.478348056078967
+['read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[3.2000000e+01 0.0000000e+00 3.1536000e+07 1.0000000e+03 6.5527777e+04]
+
+Final reward is : 19.865888705042238
+['default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[7.0000e+00 1.0000e+08 3.1536e+07 1.0000e+03 0.0000e+00]
+
+Final reward is : 7.61008558695432
+['read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.5140567e+01 0.0000000e+00 1.0000000e+00 0.0000000e+00 6.5535000e+04]
+
+Final reward is : 8.015556820337697
+['bulk_insert_buffer_size', 'div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[9.998096e+02 0.000000e+00 0.000000e+00 3.153600e+07 1.000000e+03]
+
+Final reward is : 11.039142428157406
+['default_week_format', 'div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[0.0000e+00 0.0000e+00 1.0000e+08 3.1536e+07 1.0000e+03]
+
+Final reward is : -0.39611879036639097
+['query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000000e+00 0.0000000e+00 3.1535986e+07 0.0000000e+00 0.0000000e+00]
+
+Final reward is : -0.6373114284222864
+['default_week_format', 'read_buffer_size', 'query_alloc_block_size', 'bulk_insert_buffer_size', 'eq_range_index_dive_limit']
+[0.0000000e+00 3.1921457e+01 1.3106693e+05 1.0000000e+01 0.0000000e+00]
+
+Final reward is : 0.42461088823634835
+['div_precision_increment', 'read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[ 0.       30.675146  0.        1.        0.      ]
+
+Final reward is : 1.9451170298627924
+['default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[0.0000000e+00 1.0000000e+08 1.0000000e+00 1.0000000e+03 6.5528707e+04]
+
+Final reward is : 2.261278405910668
+['read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[  23.82063    0.         1.      1000.         0.     ]
+
+Final reward is : 0.26604806601726044
+['div_precision_increment', 'read_buffer_size', 'query_alloc_block_size', 'default_week_format', 'eq_range_index_dive_limit']
+[0.0000000e+00 2.7423994e+01 1.3106691e+05 0.0000000e+00 9.9999992e+07]
+
+Final reward is : 1.052785190126751
+['default_week_format', 'div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[0.000000e+00 2.232458e+01 0.000000e+00 3.153600e+07 0.000000e+00]
+
+Final reward is : 1.238036047234307
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.0000000e+00 3.1535996e+07 1.0000000e+03 0.0000000e+00 2.0000000e+00]
+
+Final reward is : 8.548025456108093
+['bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']2020-06-13 13:49:09.066121: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:49:09.066171: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:49:55.947901: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:49:55.947954: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:50:50.097896: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:50:50.097946: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:51:40.652198: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:51:40.652238: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:52:31.993259: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:52:31.993306: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:53:25.466944: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:53:25.466992: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:54:16.352899: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:54:16.352938: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:55:09.323037: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:55:09.323090: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:55:59.345070: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:55:59.345113: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:56:51.821888: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:56:51.821928: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:57:46.770865: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:57:46.770923: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:58:45.802432: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:58:45.802481: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 13:59:37.953462: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 13:59:37.953513: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:00:31.614079: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:00:31.614130: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:01:19.248728: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:01:19.248778: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:02:17.049898: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:02:17.049949: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:03:09.477749: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:03:09.477802: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:04:01.175904: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:04:01.175947: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:04:54.110790: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:04:54.110841: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:05:47.650402: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:05:47.650457: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:06:37.541354: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:06:37.541401: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:07:28.867450: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:07:28.867501: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:08:17.525143: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:08:17.525188: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:09:12.845025: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:09:12.845069: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:10:05.475963: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:10:05.476014: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:10:59.918699: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:10:59.918742: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:11:53.898527: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:11:53.898572: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:12:46.310141: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:12:46.310192: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:13:33.403557: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:13:33.403602: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:14:22.758524: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:14:22.758568: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:15:13.915167: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:15:13.915212: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:16:10.499459: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:16:10.499509: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:17:05.963543: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:17:05.963592: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:17:57.395532: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:17:57.395575: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:18:54.352037: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:18:54.352082: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:19:50.525681: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:19:50.525726: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:20:41.181200: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:20:41.181251: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:21:33.848795: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:21:33.848834: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+
+[1.0000e+03 0.0000e+00 3.1536e+07 1.0000e+03 0.0000e+00]
+
+Final reward is : 1.5387916500628391
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.000000e+00 3.153599e+07 0.000000e+00 6.553500e+04 2.000000e+00]
+
+Final reward is : 2.3811562819869745
+['default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[0.0000000e+00 1.0000000e+08 3.1535996e+07 0.0000000e+00 0.0000000e+00]
+
+Final reward is : -1.0058195967396695
+['bulk_insert_buffer_size', 'div_precision_increment', 'query_alloc_block_size', 'default_week_format', 'eq_range_index_dive_limit']
+[1.e+03 3.e+01 1.e+00 7.e+00 1.e+08]
+
+Final reward is : 6.072019845373252
+['read_buffer_size', 'default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.000000e+00 0.000000e+00 9.999999e+07 1.000000e+00 0.000000e+00]
+
+Final reward is : 7.475796108766805
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.0000000e+00 3.1535996e+07 9.9976544e+02 6.5535000e+04 4.2949600e+05]
+
+Final reward is : 7.2115348529996774
+['query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000000e+00 1.0000000e+08 1.0000000e+00 0.0000000e+00 6.5532055e+04]
+
+Final reward is : -1.2991496646898026
+['read_buffer_size', 'div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.e+00 0.e+00 1.e+08 1.e+00 0.e+00]
+
+Final reward is : 11.835025982871969
+['div_precision_increment', 'query_alloc_block_size', 'read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[3.0000000e+01 1.0000000e+00 2.8326218e+01 1.0000000e+08 1.0000000e+00]
+
+Final reward is : 8.759751175974587
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.0000000e+00 3.1535996e+07 0.0000000e+00 0.0000000e+00 2.0000000e+00]
+
+Final reward is : 8.383166233252853
+['bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000e+01 0.0000e+00 3.1536e+07 0.0000e+00 6.5535e+04]
+
+Final reward is : -0.6519371795938598
+['default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[7.0000e+00 1.0000e+08 1.0000e+00 0.0000e+00 6.5535e+04]
+
+Final reward is : 13.902127164942463
+['query_alloc_block_size', 'read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.310710e+05 1.000000e+00 0.000000e+00 1.000000e+00 9.979352e+02]
+
+Final reward is : 8.293329286663385
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[       0.  31536000.         0.         0.    429491.8]
+
+Final reward is : 4.131089904570567
+['read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000000e+00 1.0000000e+08 3.1535994e+07 9.8071112e+02 6.5517465e+04]
+
+Final reward is : 4.157148296211688
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.000000e+00 3.153597e+07 1.000000e+03 6.553500e+04 4.294960e+05]
+
+Final reward is : 8.803990485857561
+['default_week_format', 'read_buffer_size', 'bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[0.0000000e+00 2.8985006e+01 1.0000000e+01 9.9999992e+07 3.1535994e+07]
+
+Final reward is : 4.373904731559662
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.0000000e+00 1.0000000e+00 0.0000000e+00 6.5523332e+04 2.0000000e+00]
+
+Final reward is : 7.273093427106408
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.0000000e+00 1.0000000e+00 9.9577814e+02 0.0000000e+00 4.2949600e+05]
+
+Final reward is : 5.259509293872976
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[       0. 31535990.        0.        0.   429496.]
+
+Final reward is : 5.663727939905395
+['query_alloc_block_size', 'div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.31067195e+05 8.88811493e+00 9.99999840e+07 1.00000000e+00
+ 0.00000000e+00]
+
+Final reward is : 3.2403342302789975
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.000000e+00 3.153599e+07 9.838000e+02 0.000000e+00 2.000000e+00]
+
+Final reward is : 7.824415965391918
+['bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[998.12646   0.        1.        0.        0.     ]
+
+Final reward is : 1.266064065650739
+['query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[  131071.        0. 31535992.        0.    65535.]
+
+Final reward is : -2.007591688538467
+['div_precision_increment', 'bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[  0.      986.73535   0.        1.        0.     ]
+
+Final reward is : 2.80663987494794
+['bulk_insert_buffer_size', 'div_precision_increment', 'read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[1.0000000e+01 2.2605293e+01 2.6416271e+01 1.0000000e+08 1.0000000e+00]
+
+Final reward is : 10.765945607101314
+['bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.000000e+01 9.999998e+07 3.153600e+07 0.000000e+00 6.552650e+04]
+
+Final reward is : 1.6710865880412706
+['div_precision_increment', 'query_alloc_block_size', 'default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[1.9217905e+01 1.0000000e+00 0.0000000e+00 1.0000000e+08 1.0000000e+00]
+
+Final reward is : 1.6507886518121935
+['query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[   1.    0.    1. 1000.    0.]
+
+Final reward is : 3.2841170283221004
+['query_alloc_block_size', 'bulk_insert_buffer_size', 'default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[1.310710e+05 9.949713e+02 7.000000e+00 9.999999e+07 3.153599e+07]
+
+Final reward is : 3.271034999975167
+['bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000e+03 1.0000e+08 3.1536e+07 0.0000e+00 0.0000e+00]
+
+Final reward is : -0.5435498897902606
+['default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[7.0000000e+00 0.0000000e+00 3.1535994e+07 1.0000000e+03 0.0000000e+00]
+
+Final reward is : 7.1859494812810105
+['default_week_format', 'div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[7.6831657e-01 2.8378321e+01 0.0000000e+00 1.0000000e+00 9.9597485e+02]
+
+Final reward is : -0.8270312709757992
+['bulk_insert_buffer_size', 'read_buffer_size', 'query_alloc_block_size', 'default_week_format', 'eq_range_index_dive_limit']
+[1.e+01 1.e+00 1.e+00 7.e+00 1.e+08]
+
+Final reward is : 2.2333954441499824
+['div_precision_increment', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[0.000000e+00 1.000000e+00 9.999998e+07 1.000000e+00 0.000000e+00]
+
+Final reward is : 5.126687075222858
+['read_buffer_size', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[3.20000e+01 1.31071e+05 1.00000e+08 1.00000e+00 0.00000e+00]
+
+Final reward is : 6.994552888991635
+['read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000000e+00 0.0000000e+00 1.0000000e+00 1.0000000e+03 6.5510074e+04]
+
+Final reward is : 1.979835851946686
+['read_buffer_size', 'query_alloc_block_size', 'div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[1.e+00 1.e+00 3.e+01 1.e+08 1.e+00]
+
+Final reward is : 6.3029261627189594
+['bulk_insert_buffer_size', 'div_precision_increment', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout']2020-06-13 14:22:21.346124: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:22:21.346166: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:23:13.985857: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:23:13.985908: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:24:08.518576: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:24:08.518631: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:25:00.511069: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:25:00.511124: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:25:49.176103: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:25:49.176156: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:26:44.302139: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:26:44.302192: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:27:36.468950: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:27:36.469001: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:28:30.603360: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:28:30.603419: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:29:24.751705: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:29:24.751762: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:30:24.704389: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:30:24.704433: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:31:23.109763: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:31:23.109811: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:32:13.031587: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:32:13.031638: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:33:07.570063: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:33:07.570110: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:33:55.158426: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:33:55.158468: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:34:42.619460: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:34:42.619514: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:35:38.547208: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:35:38.547257: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:36:34.661110: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:36:34.661158: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:37:30.163074: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:37:30.163123: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:38:19.642789: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:38:19.642835: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:39:09.995524: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:39:09.995617: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:40:02.876677: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:40:02.876726: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:40:56.707861: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:40:56.707908: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:41:47.222369: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:41:47.222416: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:42:41.110025: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:42:41.110069: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:43:31.403144: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:43:31.403190: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:44:24.354605: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:44:24.354656: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:45:19.392360: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:45:19.392401: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:46:17.883653: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:46:17.883697: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:47:08.153854: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:47:08.153899: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:47:59.573835: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:47:59.573893: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:48:58.572039: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:48:58.572085: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:49:57.162432: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:49:57.162474: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:50:48.142637: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:50:48.142700: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:51:44.223210: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:51:44.223249: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:52:50.999077: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:52:50.999129: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:53:48.733258: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:53:48.733304: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:54:42.554472: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:54:42.554524: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+
+[1.000000e+03 3.000000e+01 1.000000e+00 9.999999e+07 3.153600e+07]
+
+Final reward is : -0.03724843611345436
+['read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[3.2000000e+01 0.0000000e+00 3.1535988e+07 0.0000000e+00 6.5535000e+04]
+
+Final reward is : 2.8737374694434443
+['default_week_format', 'bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[  7.     991.1441   0.       1.       0.    ]
+
+Final reward is : 1.3211701793016672
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[9.9999992e+07 3.1536000e+07 9.9066943e+02 6.5535000e+04 2.0000000e+00]
+
+Final reward is : 4.158790170132325
+['bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000e+01 0.0000e+00 1.0000e+00 1.0000e+03 6.5535e+04]
+
+Final reward is : 10.214159351433242
+['read_buffer_size', 'query_alloc_block_size', 'default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[1.0000000e+00 1.3107100e+05 0.0000000e+00 1.0000000e+08 3.1535986e+07]
+
+Final reward is : 8.222951715741843
+['read_buffer_size', 'default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[20.435896  0.        0.        1.        0.      ]
+
+Final reward is : 4.97762230567416
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[1.0000000e+08 1.0000000e+00 1.0000000e+03 0.0000000e+00 4.2949475e+05]
+
+Final reward is : 1.132808251169278
+['div_precision_increment', 'read_buffer_size', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[0.0000000e+00 1.0000000e+00 1.0000000e+00 0.0000000e+00 3.1535998e+07]
+
+Final reward is : -1.9322081887365654
+['default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[2.9145616e-01 1.0000000e+08 1.0000000e+00 0.0000000e+00 0.0000000e+00]
+
+Final reward is : 6.530222471736953
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.0000000e+00 3.1535992e+07 1.0000000e+03 6.5535000e+04 4.2947541e+05]
+
+Final reward is : 6.274758603614757
+['default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[       0.           0.    31536000.           0.       65529.453]
+
+Final reward is : 10.21158952419697
+['query_alloc_block_size', 'div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.310710e+05 3.000000e+01 0.000000e+00 1.000000e+00 9.805432e+02]
+
+Final reward is : 6.229044310000516
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[1.000000e+08 1.000000e+00 0.000000e+00 0.000000e+00 4.294914e+05]
+
+Final reward is : 1.3530079455164585
+['div_precision_increment', 'query_alloc_block_size', 'bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[1.9200724e+01 1.3107100e+05 9.9577124e+02 1.0000000e+08 1.0000000e+00]
+
+Final reward is : 6.908787037006812
+['div_precision_increment', 'read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[0.0000e+00 1.0000e+00 0.0000e+00 3.1536e+07 0.0000e+00]
+
+Final reward is : -0.08573680398756017
+['div_precision_increment', 'default_week_format', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[2.0136112e+01 0.0000000e+00 1.3107100e+05 1.0000000e+08 3.1536000e+07]
+
+Final reward is : 11.35822789830643
+['query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.310710e+05 1.000000e+08 1.000000e+00 0.000000e+00 6.552885e+04]
+
+Final reward is : 2.0590481883696987
+['query_alloc_block_size', 'default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.31065164e+05 1.82910949e-01 1.00000000e+08 1.00000000e+00
+ 0.00000000e+00]
+
+Final reward is : 0.36747765621608447
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[1.000000e+08 3.153600e+07 1.000000e+03 6.553500e+04 4.294932e+05]
+
+Final reward is : 9.15660812691875
+['query_alloc_block_size', 'div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.3106967e+05 0.0000000e+00 1.0000000e+08 3.1535996e+07 0.0000000e+00]
+
+Final reward is : 5.731480154749964
+['read_buffer_size', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.0000000e+00 1.3106698e+05 0.0000000e+00 3.1536000e+07 9.9170575e+02]
+
+Final reward is : 6.253748977551576
+['div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[0.000000e+00 0.000000e+00 3.153600e+07 1.000000e+03 6.552266e+04]
+
+Final reward is : 9.3436894838764
+['div_precision_increment', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[2.5157902e+01 1.0000000e+00 0.0000000e+00 3.1535990e+07 9.9447083e+02]
+
+Final reward is : -0.6784890694603185
+['read_buffer_size', 'query_alloc_block_size', 'div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[1.0000000e+00 1.3107067e+05 1.5497977e+01 9.9999992e+07 1.0000000e+00]
+
+Final reward is : 6.411275124028401
+['read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[3.200000e+01 9.999998e+07 3.153600e+07 0.000000e+00 0.000000e+00]
+
+Final reward is : 8.387990956117571
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[1.0000000e+08 3.1535988e+07 9.9877960e+02 6.5530578e+04 2.0000000e+00]
+
+Final reward is : -1.4695010145158822
+['default_week_format', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[0.0000000e+00 1.0000000e+00 0.0000000e+00 3.1535996e+07 0.0000000e+00]
+
+Final reward is : -1.8710210695146186
+['read_buffer_size', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[3.1359098e+01 1.3105116e+05 0.0000000e+00 1.0000000e+00 1.0000000e+03]
+
+Final reward is : 5.4521637725842265
+['bulk_insert_buffer_size', 'read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.0000000e+01 1.0000000e+00 1.0000000e+08 3.1535984e+07 0.0000000e+00]
+
+Final reward is : 7.20152276574304
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[9.9999984e+07 3.1535992e+07 0.0000000e+00 6.5535000e+04 2.0000000e+00]
+
+Final reward is : 6.081598647448554
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[9.999999e+07 1.000000e+00 0.000000e+00 0.000000e+00 2.000000e+00]
+
+Final reward is : 6.688985561669207
+['read_buffer_size', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[2.7767282e+01 1.0000000e+00 1.0000000e+08 3.1535998e+07 0.0000000e+00]
+
+Final reward is : 10.221785695381376
+['div_precision_increment', 'read_buffer_size', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[2.9368734e+01 2.8037024e+01 1.0000000e+00 1.0000000e+08 1.0000000e+00]
+
+Final reward is : 5.180716930409757
+['div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[0.000000e+00 1.000000e+08 3.153600e+07 0.000000e+00 6.553078e+04]
+
+Final reward is : 7.152488518637188
+['read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000e+00 0.0000e+00 1.0000e+00 1.0000e+03 6.5535e+04]
+
+Final reward is : 9.855942341664438
+['div_precision_increment', 'read_buffer_size', 'default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[3.000000e+01 2.119558e+01 7.000000e+00 1.000000e+08 1.000000e+00]
+
+Final reward is : 7.664036431267436
+['default_week_format', 'div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']2020-06-13 14:55:40.305700: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:55:40.305745: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:56:36.133810: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:56:36.133854: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:57:32.675745: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:57:32.675797: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:58:31.566100: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:58:31.566150: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 14:59:19.427852: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 14:59:19.427898: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:00:09.195175: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:00:09.195220: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:01:01.219562: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:01:01.219613: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:01:58.570158: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:01:58.570212: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:02:51.717372: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:02:51.717420: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:03:43.106396: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:03:43.106448: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:04:32.726894: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:04:32.726951: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:05:23.647001: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:05:23.647048: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:06:13.692326: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:06:13.692382: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:07:05.315353: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:07:05.315397: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:07:57.136687: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:07:57.136737: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:08:48.971309: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:08:48.971352: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:09:42.108786: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:09:42.108838: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:10:36.942132: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:10:36.942177: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:11:27.268013: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:11:27.268059: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:12:20.272950: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:12:20.272990: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:13:10.265176: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:13:10.265222: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:14:03.202091: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:14:03.202134: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:14:59.060668: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:14:59.060710: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:15:58.245194: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:15:58.245248: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:16:52.005886: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:16:52.005932: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:17:40.546655: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:17:40.546701: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:18:31.527792: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:18:31.527841: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:19:25.787497: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:19:25.787548: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:20:18.873060: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:20:18.873098: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:21:05.415153: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:21:05.415199: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:21:55.779847: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:21:55.779895: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:22:53.085805: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:22:53.085851: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:23:48.364571: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:23:48.364628: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:24:41.327038: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:24:41.327083: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:25:27.563319: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:25:27.563363: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:26:20.300691: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:26:20.300741: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:27:14.802523: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:27:14.802563: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:27:59.795795: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:27:59.795840: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+
+[7.0000000e+00 1.7557009e+01 0.0000000e+00 3.1535994e+07 0.0000000e+00]
+
+Final reward is : 7.840224478006107
+['read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[3.200000e+01 9.999999e+07 1.000000e+00 0.000000e+00 6.553500e+04]
+
+Final reward is : 7.447236564012859
+['read_buffer_size', 'query_alloc_block_size', 'default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[1.0000000e+00 1.0000000e+00 0.0000000e+00 0.0000000e+00 3.1535998e+07]
+
+Final reward is : 2.5092297334290214
+['read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000000e+00 0.0000000e+00 3.1535998e+07 1.0000000e+03 0.0000000e+00]
+
+Final reward is : 1.4036283638279083
+['default_week_format', 'query_alloc_block_size', 'div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[0.0000e+00 1.0000e+00 3.0000e+01 0.0000e+00 3.1536e+07]
+
+Final reward is : 7.689410531745479
+['bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000e+01 0.0000e+00 3.1536e+07 0.0000e+00 0.0000e+00]
+
+Final reward is : 8.715298739446583
+['read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[2.9256748e+01 0.0000000e+00 3.1535996e+07 0.0000000e+00 6.5531445e+04]
+
+Final reward is : 10.330880495731389
+['div_precision_increment', 'read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.4928078e+01 3.2000000e+01 1.0000000e+08 3.1535992e+07 9.9356018e+02]
+
+Final reward is : 5.0377448434353855
+['query_alloc_block_size', 'default_week_format', 'read_buffer_size', 'bulk_insert_buffer_size', 'eq_range_index_dive_limit']
+[1.0e+00 7.0e+00 3.2e+01 1.0e+01 1.0e+08]
+
+Final reward is : 5.299141018256492
+['div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[0.e+00 1.e+08 1.e+00 1.e+03 0.e+00]
+
+Final reward is : 12.359786385578694
+['bulk_insert_buffer_size', 'query_alloc_block_size', 'default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[1.0000000e+03 1.3106739e+05 7.0000000e+00 0.0000000e+00 3.1536000e+07]
+
+Final reward is : -0.554450123331556
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.0000000e+00 3.1535998e+07 9.9708362e+02 0.0000000e+00 4.2949600e+05]
+
+Final reward is : -2.080126765609782
+['default_week_format', 'read_buffer_size', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[7.0000000e+00 1.0000000e+00 1.0000000e+00 0.0000000e+00 3.1535982e+07]
+
+Final reward is : 2.8638669359327045
+['bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[9.9240259e+02 9.9999992e+07 1.0000000e+00 0.0000000e+00 6.5523797e+04]
+
+Final reward is : 8.047336537498749
+['default_week_format', 'query_alloc_block_size', 'bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[2.42986655e+00 1.31054555e+05 9.98980835e+02 1.00000000e+08
+ 1.00000000e+00]
+
+Final reward is : 2.5346572344002793
+['query_alloc_block_size', 'div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.0000000e+00 0.0000000e+00 0.0000000e+00 3.1535996e+07 1.0000000e+03]
+
+Final reward is : 6.008558553611761
+['default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[0.0000000e+00 0.0000000e+00 3.1535998e+07 9.9408691e+02 6.5520371e+04]
+
+Final reward is : 9.542414269030683
+['div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[       0.        0. 31535998.        0.        0.]
+
+Final reward is : 9.237583178980586
+['default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[7.e+00 1.e+08 1.e+00 1.e+03 0.e+00]
+
+Final reward is : 4.699189915395603
+['div_precision_increment', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[0.0000000e+00 1.3107100e+05 1.0000000e+08 3.1535992e+07 0.0000000e+00]
+
+Final reward is : 3.754046550945716
+['default_week_format', 'query_alloc_block_size', 'bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[7.0000e+00 1.0000e+00 1.0000e+03 0.0000e+00 3.1536e+07]
+
+Final reward is : 9.421479031069062
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.0000e+00 3.1536e+07 1.0000e+03 0.0000e+00 2.0000e+00]
+
+Final reward is : 1.2542477844888744
+['read_buffer_size', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.4056471e+01 1.3107100e+05 1.0000000e+08 3.1536000e+07 0.0000000e+00]
+
+Final reward is : 5.835596824795233
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[9.9999992e+07 1.0000000e+00 1.0000000e+03 0.0000000e+00 4.2948897e+05]
+
+Final reward is : 1.7652955580023337
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[9.9999992e+07 1.0000000e+00 9.8766669e+02 6.5523363e+04 2.0000000e+00]
+
+Final reward is : -2.1618540505220425
+['query_alloc_block_size', 'read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.0000e+00 3.2000e+01 0.0000e+00 3.1536e+07 0.0000e+00]
+
+Final reward is : 2.1899519850099542
+['query_alloc_block_size', 'default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.3106953e+05 0.0000000e+00 0.0000000e+00 1.0000000e+00 0.0000000e+00]
+
+Final reward is : 4.8977361678382385
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[1.0000000e+08 1.0000000e+00 9.8673444e+02 0.0000000e+00 2.0000000e+00]
+
+Final reward is : 0.24834860975984432
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[   0.    1. 1000.    0.    2.]
+
+Final reward is : 7.38753851620156
+['read_buffer_size', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[2.3713017e+01 1.0000000e+00 9.9999992e+07 3.1535992e+07 1.0000000e+03]
+
+Final reward is : 1.2732927510034824
+['query_alloc_block_size', 'div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.310710e+05 0.000000e+00 9.999999e+07 1.000000e+00 0.000000e+00]
+
+Final reward is : 6.146948797155035
+['default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[2.9528177e+00 1.0000000e+08 3.1536000e+07 0.0000000e+00 6.5526832e+04]
+
+Final reward is : 10.45514162847898
+['query_alloc_block_size', 'div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[  1.        28.624182   0.         1.       992.01715 ]
+
+Final reward is : 2.9554406454192144
+['read_buffer_size', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[   1.    1.    0.    1. 1000.]
+
+Final reward is : 1.6925662214368622
+['default_week_format', 'div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[0.000000e+00 0.000000e+00 9.999999e+07 3.153600e+07 1.000000e+03]
+
+Final reward is : 11.093707804482852
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[9.999998e+07 3.153600e+07 0.000000e+00 6.553500e+04 2.000000e+00]
+
+Final reward is : 1.5003866489793096
+['bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000e+03 0.0000e+00 3.1536e+07 1.0000e+03 0.0000e+00]
+
+Final reward is : 1.7445851128737033
+['read_buffer_size', 'bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[2.1868166e+01 9.9301941e+02 0.0000000e+00 3.1536000e+07 0.0000000e+00]
+
+Final reward is : 3.013368869019473
+['default_week_format', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']2020-06-13 15:28:47.600029: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:28:47.600072: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:29:46.128317: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:29:46.128367: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:30:40.604769: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:30:40.604817: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:31:34.168075: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:31:34.168124: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:32:24.754649: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:32:24.754696: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:33:15.783254: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:33:15.783303: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:34:07.454372: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:34:07.454413: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:35:02.946341: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:35:02.946387: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:36:02.753627: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:36:02.753680: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:36:57.431284: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:36:57.431327: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:37:44.353003: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:37:44.353050: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:38:40.756690: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:38:40.756731: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:39:37.570317: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:39:37.570362: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:40:34.244018: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:40:34.244063: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:41:26.925662: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:41:26.925707: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:42:16.639084: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:42:16.639128: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:43:06.681820: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:43:06.681868: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:44:03.109175: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:44:03.109228: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:45:00.238545: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:45:00.238589: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:45:52.775566: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:45:52.775618: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:46:39.850441: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:46:39.850483: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:47:33.511693: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:47:33.511745: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:48:28.503713: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:48:28.503756: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:49:24.964447: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:49:24.964492: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:50:18.285514: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:50:18.285558: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:51:11.839478: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:51:11.839533: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:52:07.543696: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:52:07.543744: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:53:00.619807: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:53:00.619859: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:53:49.652596: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:53:49.652643: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:54:44.542676: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:54:44.542725: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:55:34.788464: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:55:34.788547: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:56:23.369970: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:56:23.370022: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:57:13.678361: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:57:13.678413: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+2020-06-13 15:58:04.219979: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-13 15:58:04.220028: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      
+
+[0. 1. 0. 1. 0.]
+
+Final reward is : -1.8033679256878963
+['div_precision_increment', 'read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[3.000000e+01 3.200000e+01 0.000000e+00 3.153600e+07 9.955814e+02]
+
+Final reward is : 6.513310502966949
+['read_buffer_size', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[2.9121838e+01 1.3106171e+05 0.0000000e+00 3.1536000e+07 9.8662103e+02]
+
+Final reward is : 1.1970826580226905
+['query_alloc_block_size', 'div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.000000e+00 3.000000e+01 0.000000e+00 3.153599e+07 0.000000e+00]
+
+Final reward is : 2.3929831251787586
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.00000e+00 1.00000e+00 1.00000e+03 0.00000e+00 4.29496e+05]
+
+Final reward is : 7.08088494034939
+['read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.000000e+00 9.999998e+07 1.000000e+00 0.000000e+00 0.000000e+00]
+
+Final reward is : 10.690584819576939
+['read_buffer_size', 'query_alloc_block_size', 'default_week_format', 'div_precision_increment', 'eq_range_index_dive_limit']
+[26.530037  1.        2.682248  0.        0.      ]
+
+Final reward is : 7.682551110962275
+['default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[7.0000000e+00 9.9999992e+07 3.1535992e+07 0.0000000e+00 0.0000000e+00]
+
+Final reward is : 3.001030432476121
+['bulk_insert_buffer_size', 'read_buffer_size', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[1.0000000e+03 1.0000000e+00 1.0000000e+00 0.0000000e+00 3.1535986e+07]
+
+Final reward is : 2.1014400876895203
+['div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[3.e+01 1.e+08 1.e+00 1.e+03 0.e+00]
+
+Final reward is : 1.9541120582190628
+['query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1. 0. 1. 0. 0.]
+
+Final reward is : 6.229327676319486
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[1.0000000e+08 3.1535998e+07 0.0000000e+00 0.0000000e+00 2.0000000e+00]
+
+Final reward is : 2.494629146285488
+['query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[   1.    0.    1. 1000.    0.]
+
+Final reward is : 16.600351114706644
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[1.0000000e+08 3.1535998e+07 1.0000000e+03 6.5522188e+04 4.2949600e+05]
+
+Final reward is : -1.8504253396679728
+['query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000000e+00 9.9999992e+07 3.1535984e+07 9.9460223e+02 0.0000000e+00]
+
+Final reward is : 6.521381308226619
+['div_precision_increment', 'default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[0.0000000e+00 1.8680499e+00 1.0000000e+08 3.1535998e+07 9.8985303e+02]
+
+Final reward is : 6.409835050466079
+['read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.e+00 1.e+08 1.e+00 0.e+00 0.e+00]
+
+Final reward is : 0.20143719699618523
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.00000e+00 1.00000e+00 9.92603e+02 6.55350e+04 2.00000e+00]
+
+Final reward is : 4.419565429917337
+['bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.000000e+01 9.999999e+07 1.000000e+00 9.985040e+02 0.000000e+00]
+
+Final reward is : -0.5891008596432351
+['read_buffer_size', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[3.200000e+01 1.310710e+05 9.999999e+07 1.000000e+00 0.000000e+00]
+
+Final reward is : 11.006592563768534
+['bulk_insert_buffer_size', 'default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[994.88214   7.        0.        1.      990.07275]
+
+Final reward is : 0.3892826864518589
+['read_buffer_size', 'div_precision_increment', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[3.1069315e+01 2.5973385e+01 1.0000000e+00 1.0000000e+08 1.0000000e+00]
+
+Final reward is : 5.553670289609168
+['read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.0000e+00 0.0000e+00 3.1536e+07 1.0000e+03 6.5535e+04]
+
+Final reward is : 14.580024488368027
+['div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[1.6500565e+01 1.0000000e+08 1.0000000e+00 0.0000000e+00 6.5527973e+04]
+
+Final reward is : -0.17138810837140706
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[0.000000e+00 3.153600e+07 9.983122e+02 0.000000e+00 2.000000e+00]
+
+Final reward is : 10.39063614124771
+['div_precision_increment', 'read_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[   0.        25.92039    0.         1.      1000.     ]
+
+Final reward is : 6.518906373152832
+['read_buffer_size', 'default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.0000000e+00 0.0000000e+00 0.0000000e+00 3.1535996e+07 9.9089948e+02]
+
+Final reward is : 5.7987927172962594
+['div_precision_increment', 'bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[3.0000000e+01 9.9079865e+02 0.0000000e+00 3.1535990e+07 0.0000000e+00]
+
+Final reward is : 7.1753668957830214
+['eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count', 'max_heap_table_size']
+[9.999999e+07 3.153600e+07 0.000000e+00 6.553500e+04 4.294960e+05]
+
+Final reward is : -1.0358728376792365
+['bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time', 'max_error_count']
+[9.9749872e+02 0.0000000e+00 1.0000000e+00 9.8938739e+02 6.5525605e+04]
+
+Final reward is : 11.120108732488825
+['query_alloc_block_size', 'div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.000000e+00 6.818765e+00 0.000000e+00 3.153600e+07 0.000000e+00]
+
+Final reward is : 1.838963390482657
+['read_buffer_size', 'query_alloc_block_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[2.1765501e+01 1.3107100e+05 9.9999984e+07 3.1536000e+07 0.0000000e+00]
+
+Final reward is : 9.212229052086704
+['query_alloc_block_size', 'bulk_insert_buffer_size', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[1.31053695e+05 1.00000000e+03 1.00000000e+08 3.15359980e+07
+ 0.00000000e+00]
+
+Final reward is : 5.95122594500909
+['read_buffer_size', 'div_precision_increment', 'eq_range_index_dive_limit', 'lock_wait_timeout', 'long_query_time']
+[  1.       22.06458   0.        1.      988.2383 ]
+
+Final reward is : -1.4390058306635711
+['bulk_insert_buffer_size', 'read_buffer_size', 'default_week_format', 'eq_range_index_dive_limit', 'lock_wait_timeout']
+[1.000000e+03 2.922399e+01 0.000000e+00 1.000000e+08 1.000000e+00]
+

@@ -101,10 +101,10 @@ class Env:
             commands += com
             inserted.add(value)
 
+        insertedVal = list(inserted)
         for i in range(update):
-            oldValue = random.randint(1, maxVal)
-            if oldValue not in inserted:
-                continue
+            idx = random.randint(1, len(insertedVal))
+            oldValue = insertedVal[idx-1]
             newValue = random.randint(1, maxVal)
             com = updateCommand.format(oldValue, newValue)
             commands += com
@@ -115,9 +115,8 @@ class Env:
             commands += com
         
         for i in range(delete):
-            oldValue = random.randint(1, maxVal)
-            if oldValue not in inserted:
-                continue
+            idx = random.randint(1, len(insertedVal))
+            oldValue = insertedVal[idx-1]
             com = deleteCommand.format(oldValue)
             commands += com
 
@@ -159,7 +158,7 @@ class Env:
         return executeTime
     
     def getReward(self):
-        return self.getMetricsVec(self.queries)[0] * 1000
+        return self.getMetricsVec(self.queries)[0]
 
     # TODO: how to generate metrics
     def getMetricsVec(self, queries):
@@ -172,7 +171,7 @@ class Env:
 
         newTime = endTime - startTime
         oldTime = self.getDefaultSettingExecuteTime(queries)
-        return [oldTime - newTime]
+        return [(oldTime-newTime) * 1.0 / oldTime * 100]
     
     def currentKnobValue(self):
         value = []
